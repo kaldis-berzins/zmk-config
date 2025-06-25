@@ -9,16 +9,91 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+        behaviors {
+                hml: home_row_mod_left {
+                    compatible = "zmk,behavior-hold-tap";
+                    #binding-cells = <2>;
+                    flavor = "balanced";
+                    require-prior-idle-ms = <150>;
+                    tapping-term-ms = <280>;
+                    quick-tap-ms = <175>;
+                    bindings = <&kp>, <&kp>;
+                    hold-trigger-key-positions = < Y U I O P H J K L SEMI N M COMMA DOT FSLH >; // List of keys on the right side of the keyboard
+                    hold-trigger-on-release;
+                };
+                hmr: home_row_mod_right {
+                    compatible = "zmk,behavior-hold-tap";
+                    #binding-cells = <2>;
+                    flavor = "balanced";
+                    require-prior-idle-ms = <150>;
+                    tapping-term-ms = <280>;
+                    quick-tap-ms = <175>;
+                    bindings = <&kp>, <&kp>;
+                    hold-trigger-key-positions = < Q W E R T A S D F G Z X C V B >; // List of keys on the left side of the keyboard
+                    hold-trigger-on-release;
+                };
+        };
+
+        combos {
+                compatible = "zmk,combos";
+                combo_tab {
+                        timeout-ms = <50>;
+                        key-positions = <1 2>;
+                        bindings = <&kp TAB>;
+                };
+        };
+
         keymap {
                 compatible = "zmk,keymap";
-
+// -------------------------------- DEFAULT LAYER --------------------------------------------
                 default_layer {
-// ----------------------------------------------------------------------------------------- Old
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-// ----------------------------------------------------------------------------------------- New
+// |-----|  Q-TAB-W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |-----|
+// |-----| G(A)| A(S)| S(D)| C(F)|  G  |   |  H  | C(J)| S(K)| A(L)| G(;)|-----|
+// |-----|  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  |-----|
+//                    | ESC |L SPC| RSE |   |SHIFT| RET | BSPC|
+                        bindings = <
+   &none &kp Q       &kp W       &kp E         &kp R        &kp T     &kp Y     &kp U        &kp I         &kp O       &kp P          &none
+   &none &hml LGUI A &hml LALT S &hml LSHIFT D &hml LCTRL F &kp G     &kp H     &hmr RCTRL J &hmr RSHIFT K &hmr RALT L &hmr RGUI SEMI &none
+   &none &kp Z       &kp X       &kp C         &kp V        &kp B     &kp N     &kp M        &kp COMMA     &kp DOT     &kp FSLH       &none
+                                 &kp ESC       &lt 1 SPACE  &mo 2     &kp SHIFT &kp RET      &kp BSPC
+                        >;
+                };
+// ---------------------------------- LOWER LAYER --------------------------------------------
+                lower_layer {
+// |      |     |     |     |     | PST |   | PST |     |  UP |     |     |      |
+// |      |     |     |     |     | CPY |   | CPY | LFT | DWN | RGT |SCSHT|      |
+// |      |     |     |     |     | CUT |   | CUT |     |     |     |     |      |
+//                    |     |     |     |   |     |     |     |
+                        bindings = <
+   &trans &trans &trans &trans &trans &kp LC(V)   &kp LC(V) &trans   &kp UP   &trans    &trans &trans
+   &trans &trans &trans &trans &trans &kp LC(C)   &kp LC(C) &kp LEFT &kp DOWN &kp RIGHT &trans &trans
+   &trans &trans &trans &trans &trans &kp LC(X)   &kp LC(X) &trans   &trans   &trans    &trans &trans
+                        &trans &trans &trans      &trans    &trans   &trans
+                        >;
+                };
+// ---------------------------------- RAISE LAYER --------------------------------------------
+                raise_layer {
+// |-----|  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |-----|
+// |-----|  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |-----|
+// |-----|  \  |  [  |  ]  |  =  |  _  |   |  -  |  +  |  {  |  }  | "|" |-----|
+//                   | ESC |     |     |   |  '  |  "  | DEL |
+                        bindings = <
+   &none &kp EXCL      &kp AT    &kp HASH &kp DLLR  &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &none
+   &none &kp N1        &kp N2    &kp N3   &kp N4    &kp N5      &kp N6    &kp N7    &kp N8    &kp N9   &kp N0   &none
+   &none &kp BACKSLASH &kp LBKT  &kp RBKT &kp EQUAL &kp UNDER   &kp MINUS &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &none
+                                 &kp ESC  &trans    &trans      &kp SQT   &kp DQT   &kp DEL
+                        >;
+                };
+        };
+};
+
+
+/* OLD LAYOUT
+/ {
+        keymap {
+                compatible = "zmk,keymap";
+// -------------------------------- DEFAULT LAYER --------------------------------------------
+                default_layer {
 // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | GUI  |
 // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ALT  |
@@ -30,13 +105,8 @@
                   &kp ESC &kp SPACE  &mo 2   &mo 1 &kp RET &kp BSPC
                         >;
                 };
+// ---------------------------------- LOWER LAYER --------------------------------------------
                 lower_layer {
-// ----------------------------------------------------------------------------------------- Old
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-// ----------------------------------------------------------------------------------------- New
 // |      |     |     |     |     |     |   |     |     |  UP |     |     |      |
 // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   |PSCRN| LFT | DWN | RGT |     |      |
 // |      |ULCK |     |     |     |     |   |     |     |     |     |     |      |
@@ -48,14 +118,8 @@
                                            &trans       &trans       &trans         &trans    &trans   &trans
                         >;
                 };
-
+// ---------------------------------- RAISE LAYER --------------------------------------------
                 raise_layer {
-// ----------------------------------------------------------------------------------------- Old
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-// ----------------------------------------------------------------------------------------- New
 // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | GUI  |
 // | CTRL |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |  `   |
 // | SHFT |  \  |  [  |  ]  |  =  |  _  |   |  -  |  +  |  {  |  }  | "|" |  ~   |
@@ -69,3 +133,5 @@
                 };
         };
 };
+
+*/
