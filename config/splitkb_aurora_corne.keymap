@@ -5,7 +5,7 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindins/zmk/behaviors.h>
+#include <dt-bindings/zmk/behaviors.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
@@ -51,12 +51,12 @@
 // |-----|  Q-TAB-W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |-----|
 // |-----| G(A)| A(S)| S(D)| C(F)|  G  |   |  H  | C(J)| S(K)| A(L)| G(;)|-----|
 // |-----|  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  |-----|
-//                    | ESC |L SPC| RSE |   |SHIFT| RET | BSPC|
+//                   |GRESC|L SPC| RSE |   |SHIFT| RET | BSPC|
                         bindings = <
    &none &kp Q       &kp W       &kp E         &kp R        &kp T     &kp Y     &kp U        &kp I         &kp O       &kp P          &none
    &none &hml LGUI A &hml LALT S &hml LSHIFT D &hml LCTRL F &kp G     &kp H     &hmr RCTRL J &hmr RSHIFT K &hmr RALT L &hmr RGUI SEMI &none
    &none &kp Z       &kp X       &kp C         &kp V        &kp B     &kp N     &kp M        &kp COMMA     &kp DOT     &kp FSLH       &none
-                                 &kp ESC       &lt 1 SPACE  &mo 2     &kp SHIFT &kp RET      &kp BSPC
+                                 &gresc        &lt 1 SPACE  &mo 2     &kp SHIFT &kp RET      &kp BSPC
                         >;
                 };
 // ---------------------------------- LOWER LAYER --------------------------------------------
@@ -77,12 +77,12 @@
 // |-----|  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |-----|
 // |-----|  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |-----|
 // |-----|  \  |  [  |  ]  |  =  |  _  |   |  -  |  +  |  {  |  }  | "|" |-----|
-//                   | ESC |     |     |   |  '  |  "  | DEL |
+//                   |     |     |     |   |  '  |  "  | DEL |
                         bindings = <
    &none &kp EXCL      &kp AT    &kp HASH &kp DLLR  &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &none
    &none &kp N1        &kp N2    &kp N3   &kp N4    &kp N5      &kp N6    &kp N7    &kp N8    &kp N9   &kp N0   &none
    &none &kp BACKSLASH &kp LBKT  &kp RBKT &kp EQUAL &kp UNDER   &kp MINUS &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &none
-                                 &kp ESC  &trans    &trans      &kp SQT   &kp DQT   &kp DEL
+                                 &trans   &trans    &trans      &kp SQT   &kp DQT   &kp DEL
                         >;
                 };
         };
