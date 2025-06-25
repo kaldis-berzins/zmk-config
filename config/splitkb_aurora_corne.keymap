@@ -33,6 +33,14 @@
                     hold-trigger-key-positions = < Q W E R T A S D F G Z X C V B >; // List of keys on the left side of the keyboard
                     hold-trigger-on-release;
                 };
+                lt: layer_tap {
+                    compatible = "zmk,behavior-hold-tap";
+                    #binding-cells = <2>;
+                    flavor = "tap-preferred";
+                    tapping-term-ms = <200>;
+                    bindings = <&mo>, <&kp>;
+                    display-name = "Layer-Tap";
+                };
         };
 
         combos {
