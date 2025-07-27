@@ -50,6 +50,11 @@
                         key-positions = <1 2>;
                         bindings = <&kp TAB>;
                 };
+                combo_tilde {
+                        timeout-ms = <50>;
+                        key-positions = <33 34>;
+                        bindings = <&kp TILDE>;
+                };
         };
 
         keymap {
@@ -58,7 +63,7 @@
                 default_layer {
 // |-----|  Q-TAB-W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |-----|
 // |-----| G(A)| A(S)| S(D)| C(F)|  G  |   |  H  | C(J)| S(K)| A(L)| G(;)|-----|
-// |-----|  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  |-----|
+// |-----|  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  ~  /  |-----|
 //                   |GRESC|L SPC| RSE |   |SHIFT| RET | BSPC|
                         bindings = <
    &none &kp Q       &kp W       &kp E         &kp R        &kp T     &kp Y      &kp U        &kp I         &kp O       &kp P          &none
