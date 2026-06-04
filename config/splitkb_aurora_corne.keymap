@@ -55,6 +55,11 @@
                         key-positions = <33 34>;
                         bindings = <&kp TILDE>;
                 };
+                combo_apostrophe {
+                        timeout-ms = <50>;
+                        key-positions = <21 22>;
+                        bindings = <&kp SQT>;
+                }
         };
 
         keymap {
@@ -66,8 +71,8 @@
 // |-----|  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  ~  /  |-----|
 //                   |GRESC|L SPC| RSE |   |SHIFT| RET | BSPC|
                         bindings = <
-   &none &kp Q       &kp W       &kp E         &kp R        &kp T     &kp Y      &kp U        &kp I         &kp O       &kp P          &none
-   &none &hml LGUI A &hml LALT S &hml LSHIFT D &hml LCTRL F &kp G     &kp H      &hmr RCTRL J &hmr RSHIFT K &hmr RALT L &hmr RGUI SEMI &none
+   &none &kp Q       &kp W       &kp E         &kp R        &kp T     &kp Y      &kp U        &kp I         &kp O       &kp P          &none // Last key in row: 11
+   &none &hml LGUI A &hml LALT S &hml LSHIFT D &hml LCTRL F &kp G     &kp H      &hmr RCTRL J &hmr RSHIFT K &hmr RALT L &hmr RGUI SEMI &none // Last key in row: 23
    &none &kp Z       &kp X       &kp C         &kp V        &kp B     &kp N      &kp M        &kp COMMA     &kp DOT     &kp FSLH       &none
                                  &gresc        &lt 1 SPACE  &mo 2     &kp LSHIFT &kp RET      &kp BSPC
                         >;
