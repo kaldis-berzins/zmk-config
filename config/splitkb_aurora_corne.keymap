@@ -69,12 +69,12 @@
 // |-----|  Q-TAB-W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |-----|
 // |-----| G(A)| A(S)| S(D)| C(F)|  G  |   |  H  | C(J)| S(K)| A(L)| G(;)|-----|
 // |-----|  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  ~  /  |-----|
-//                   |GRESC|L SPC| RSE |   |SHIFT| RET | BSPC|
+//                   |GRESC|L SPC| RSE |   |SHIFT|L RET| BSPC|
                         bindings = <
    &none &kp Q       &kp W       &kp E         &kp R        &kp T     &kp Y      &kp U        &kp I         &kp O       &kp P          &none // Last key in row: 11
    &none &hml LGUI A &hml LALT S &hml LSHIFT D &hml LCTRL F &kp G     &kp H      &hmr RCTRL J &hmr RSHIFT K &hmr RALT L &hmr RGUI SEMI &none // Last key in row: 23
    &none &kp Z       &kp X       &kp C         &kp V        &kp B     &kp N      &kp M        &kp COMMA     &kp DOT     &kp FSLH       &none
-                                 &gresc        &lt 1 SPACE  &mo 2     &kp LSHIFT &kp RET      &kp BSPC
+                                 &gresc        &lt 1 SPACE  &mo 2     &kp LSHIFT &lt 1 RET    &kp BSPC
                         >;
                 };
 // ---------------------------------- LOWER LAYER --------------------------------------------
@@ -93,14 +93,14 @@
 // ---------------------------------- RAISE LAYER --------------------------------------------
                 raise_layer {
 // |-----|  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |-----|
-// |-----|  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |-----|
+// |-----| G(1)| A(2)| S(3)| C(4)|  5  |   | C(6)| S(7)| A(8)| G(9)|  0  |-----|
 // |-----|  \  |  [  |  ]  |  =  |  _  |   |  -  |  +  |  {  |  }  | "|" |-----|
 //                   |     |     |     |   |  '  |  "  | DEL |
                         bindings = <
-   &none &kp EXCL      &kp AT    &kp HASH &kp DLLR  &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &none
-   &none &kp N1        &kp N2    &kp N3   &kp N4    &kp N5      &kp N6    &kp N7    &kp N8    &kp N9   &kp N0   &none
-   &none &kp BACKSLASH &kp LBKT  &kp RBKT &kp EQUAL &kp UNDER   &kp MINUS &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &none
-                                 &trans   &trans    &trans      &kp SQT   &kp DQT   &kp DEL
+   &none &kp EXCL      &kp AT       &kp HASH       &kp DLLR      &kp PRCNT     &kp CARET &kp AMPS      &kp ASTRK      &kp LPAR     &kp RPAR     &none
+   &none &hml LGUI N1  &hml LALT N2 &hml LSHIFT N3 &hml LCTRL N4 &kp N5        &kp N6    &hmr RCTRL N7 &hmr RSHIFT N8 &hmr RALT N9 &hmr RGUI N0 &none
+   &none &kp BACKSLASH &kp LBKT     &kp RBKT       &kp EQUAL     &kp UNDER     &kp MINUS &kp PLUS      &kp LBRC       &kp RBRC     &kp PIPE     &none
+                                    &trans         &trans        &trans        &kp SQT   &kp DQT       &kp DEL
                         >;
                 };
         };
