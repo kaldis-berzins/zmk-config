@@ -84,9 +84,9 @@
 // |      |     |     |     |SCUT | CUT |   | CUT |     |     |     |     |      |
 //                    |     |     |     |   |     |     |     |
                         bindings = <
-   &trans &trans &trans &trans &kp LS(LC(V) &kp LC(V)   &kp LC(V) &trans   &kp UP   &trans    &trans &trans
-   &trans &trans &trans &trans &kp LS(LC(C) &kp LC(C)   &kp LC(C) &kp LEFT &kp DOWN &kp RIGHT &trans &trans
-   &trans &trans &trans &trans &kp LS(LC(X) &kp LC(X)   &kp LC(X) &trans   &trans   &trans    &trans &trans
+   &trans &trans &trans &trans &kp LS(LC(V)) &kp LC(V)   &kp LC(V) &trans   &kp UP   &trans    &trans &trans
+   &trans &trans &trans &trans &kp LS(LC(C)) &kp LC(C)   &kp LC(C) &kp LEFT &kp DOWN &kp RIGHT &trans &trans
+   &trans &trans &trans &trans &kp LS(LC(X)) &kp LC(X)   &kp LC(X) &trans   &trans   &trans    &trans &trans
                         &trans &trans       &trans      &trans    &trans   &trans
                         >;
                 };
